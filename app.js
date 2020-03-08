@@ -1,10 +1,10 @@
-require('dotenv').config();
+//require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', () => console.error('Something went wrong!'));
 db.once('open', () => console.log('Connected to Database'))
