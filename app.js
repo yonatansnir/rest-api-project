@@ -12,10 +12,12 @@ db.once('open', () => console.log('Connected to Database'))
 
 // Routes
 const usersRouter = require('./routes/userRouter');
+const todosRouter = require('./routes/todosRouter');
 const postsRouter = require('./routes/postsRouter');
 
 app.use(express.json());
 app.use('/users', usersRouter);
+app.use('/todos', todosRouter);
 app.use('/posts', postsRouter);
 
 app.listen(8000, () => console.log('Running on Port 8000'))
