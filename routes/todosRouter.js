@@ -66,6 +66,14 @@ router.delete('/:id', getTodo, async (req, res) => {
     }
 })
 
+// deleteing all user's todos
+router.delete('/user/:id', (req, res) => {
+    const id = req.params.id;
+    Todo.deleteMany({userId: id})
+    .then(() => res.json({message: 'all users todos deleted'}))
+    .catch(err => res.json(err));
+})
+
 async function getTodo(req, res, next){
     let todo;
     try{

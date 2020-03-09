@@ -60,6 +60,14 @@ router.delete('/:id', getPost, (req, res) => {
     .catch((err) => res.json(err))
 })
 
+// deleteing all user's post
+router.delete('/user/:id', (req, res) => {
+    const id = req.params.id;
+    Post.deleteMany({userId: id})
+    .then(() => res.json({message: 'all users post deleted'}))
+    .catch(err => res.json(err));
+})
+
 async function getPost(req, res, next){
     let post;
     try{
