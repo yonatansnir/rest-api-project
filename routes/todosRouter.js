@@ -13,6 +13,17 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Get all user todo by userId
+router.get('/user/:id', async (req, res) => {
+    const id = req.params.id;
+    try{
+        const todos = await Todo.find({userId: id});
+        res.json(todos);
+    } catch (err){
+        res.json(err);
+    }
+})
+
 // Create new Todo
 router.post('/', async (req, res) => {
     const todo = new Todo({

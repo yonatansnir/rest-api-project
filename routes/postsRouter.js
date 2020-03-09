@@ -13,6 +13,16 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Get all user's posts by id
+router.get('/user/:id', (req, res) => {
+    const id = req.params.id;
+    Post.find({userId: id})
+    .then(posts => {
+        res.json(posts);
+    })
+    .catch(err => res.json(err));
+})
+
 // Post a new post
 router.post('/', async (req, res) => {
     const post = new Post({
