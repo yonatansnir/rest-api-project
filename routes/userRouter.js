@@ -40,6 +40,9 @@ router.patch('/:id', getUser, async (req, res) => {
     if (req.body.name !== "" && req.body.email !== ""){
         res.user.name = req.body.name
         res.user.email = req.body.email
+        res.user.street = req.body.street;
+        res.user.city = req.body.city;
+        res.user.zipcode = req.body.zipcode;
     }
     try {
         const updatedUser = await res.user.save();
