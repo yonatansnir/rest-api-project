@@ -48,6 +48,8 @@ router.get('/:id', getTodo, (req, res) => {
 router.patch('/:id', getTodo, async (req, res) => {
     if (req.body.completed === true){
         res.todo.completed = true;
+    } else {
+        res.todo.completed = false;
     }
     try{
         const updatedTodo = await res.todo.save();
